@@ -11,19 +11,16 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 
 public class BaseClass {
-    private WebDriver driver;
+    public static WebDriver driver;
 
 
-    @BeforeClass
-    public void setUp() throws MalformedURLException {
-        ChromeOptions options = new ChromeOptions();
 
-    }
 
     @Test
     public void testGoogleSearch() {
         driver = new ChromeDriver();
         driver.get("https://www.google.com");
+        driver.quit();
 
     /*    WebElement searchBox = driver.findElement(By.name("q"));
         searchBox.sendKeys("Selenium GitHub Actions");
@@ -33,10 +30,4 @@ public class BaseClass {
         assert driver.getTitle().toLowerCase().contains("selenium github actions");*/
     }
 
-    @AfterClass
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 }
